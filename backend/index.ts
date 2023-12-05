@@ -1,10 +1,11 @@
 import express from "express";
 import * as dotenv from 'dotenv'
+import path from 'path';
 
 import { Client, Pool } from "pg";
 import { dbConfig } from "./db.config";
 
-dotenv.config({path: __dirname + '.env'})
+dotenv.config({path: path.resolve(__dirname + '.env')})
 
 const pool = new Pool(dbConfig);
 const app = express();
