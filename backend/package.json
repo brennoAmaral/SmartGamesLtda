@@ -16,14 +16,10 @@
     "tsx": "^4.6.2",
     "typescript": "^5.3.2"
   },
-  "engines": {
-    "node": "20.10.3"
-  },
   "dependencies": {
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "pg": "^8.11.3",
-    "serve": "^14.2.1",
-    "esbuild": "^0.18.21"
+    "serve": "^14.2.1"
   }
 }
