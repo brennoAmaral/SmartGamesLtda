@@ -37,7 +37,7 @@ app.get("/getById/:id", async (request, response)=>{
   response.json(result);
 });
 
-app.listen(process.env.PORT || 5432, function server(this: any){
+app.listen(process.env.PORT || 3000, function server(this: any){
   
   console.log("app runing", this.address().port, app.settings.env);
 });
