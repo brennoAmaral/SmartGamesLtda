@@ -5,7 +5,7 @@ import path from 'path';
 import { Client, Pool } from "pg";
 import { dbConfig } from "./db.config";
 
-// dotenv.config()
+dotenv.config()
 
 const pool = new Pool(dbConfig);
 const app = express();
