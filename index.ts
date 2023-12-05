@@ -1,6 +1,5 @@
 import express from "express";
-import * as dotenv from 'dotenv'
-
+import dotenv from "dotenv"
 import { Client, Pool } from "pg";
 import { dbConfig } from "./db.config";
 
