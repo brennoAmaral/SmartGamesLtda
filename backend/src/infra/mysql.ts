@@ -24,6 +24,7 @@ const dataBaseEngine = {
   },
   async select <R> (fields: string, table: string, options: string = ''):Promise<R[]> {
     const [rows] = await dataBase.execute(`SELECT ${fields} FROM ${table} ${options}`)
+    console.log(rows)
     return rows as unknown as R[]
   },
   mysql:{...dataBase}

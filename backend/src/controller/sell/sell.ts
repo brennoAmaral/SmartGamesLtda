@@ -9,6 +9,7 @@ import randomKeys from "./randomKeys";
 import GlobalSellsModel from "../../model/globalSells.model";
 import GlobalSells_SellsStoresModel from "../../model/globalSells_sellsStores.model";
 import DomainValidate from "../../domain/games.domain";
+import { error } from "console";
 
 export async function createSell(request: Request<ISellsRequest>, response: Response<any | yup.ValidationError['message']>) {
   const params = request.params
@@ -18,7 +19,7 @@ export async function createSell(request: Request<ISellsRequest>, response: Resp
     return
   }
 
-
+  
   const {discount, price, quantity} = request.params
   const storageRespose = await StorageController.managementStorage(request, response)
   if(storageRespose){
@@ -26,13 +27,19 @@ export async function createSell(request: Request<ISellsRequest>, response: Resp
     return
   }
  
-  const idISellStore = await SellsStoresModel(dataBaseEngine).create(params).then((item)=> item?.insertId)
+  const idISellStore = await SellsStoresModel(dataBaseEngine).create(params).then((item)=> item?.insertId).catch((error)=>{
+    response.status(500).json(error)
+    return
+  })
   if(!idISellStore){
     response.status(500).json(idISellStore)
     return
   }
   const totalValue = price * quantity
-  const idGlobalSell = await GlobalSellsModel(dataBaseEngine).create({...params, sellCode: randomKeys(), totalValue: totalValue, discount: discount}).then((item)=> item?.insertId)
+  const idGlobalSell = await GlobalSellsModel(dataBaseEngine).create({...params, sellCode: randomKeys(), totalValue: totalValue, discount: discount}).then((item)=> item?.insertId).catch((error)=>{
+    response.status(500).json(error)
+    return
+  })
   if(!idGlobalSell){
     response.status(500).json(idGlobalSell)
     return
