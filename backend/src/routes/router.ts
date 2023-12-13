@@ -6,6 +6,7 @@ import { SellController } from "../controller/sell";
 const router = Router();
 
 router.get("/api/games/:filter", GamesController.getListAll)
+router.get("/api/games", GamesController.getListAll)
 
 router.get("/api/games/getById/:id", GamesController.getGameById)
 

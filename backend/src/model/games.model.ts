@@ -9,7 +9,7 @@ import { IGamesStoreResponseDTO } from "../dtos/gamesStores.dto"
 interface IGamesModel {
   (dataBase: IDataBase): {
     getById(id: number, filter?: string): Promise<IGamesResponseDTO|undefined>
-    getAll(filter: string): Promise<IGamesResponseDTO[]> 
+    getAll(filter?: string): Promise<IGamesResponseDTO[]> 
     withPlatforms(idGame: number, filter?: string): Promise<IPlatformsResponseDTO[]>
     withStores(idGame: number, filter?: string): Promise<IGamesStoreResponseDTO[]>
     create(): unknown
@@ -19,9 +19,9 @@ interface IGamesModel {
 }
 
 const GamesModel:IGamesModel = (dataBase) => ({ 
-  async getAll(filter){
+  async getAll(filter = ''){
     console.log(filter)
-    const filterFomater = filter !== ':filter' ? ` WHERE nameGame LIKE '%${filter}%'`: ''
+    const filterFomater = filter !== ':filter' || filter !== undefined ? ` WHERE nameGame LIKE '%${filter}%'`: ''
     const gameList = await dataBase.select<IGameDTO>('*', 'games', `${filterFomater}`)
     const gamesPlatform: IGamesResponseDTO[] = []
     
@@ -55,6 +55,9 @@ const GamesModel:IGamesModel = (dataBase) => ({
     const result = await GamesStoresModel(dataBase).getAll(`WHERE games_stores.idGame = ${idGame} `)
     return result
   },
+  // async withPrice(igGame){
+  //   const result await G
+  // },
   create(){
     
   },

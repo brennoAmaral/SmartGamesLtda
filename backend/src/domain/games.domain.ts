@@ -36,7 +36,6 @@ const DomainValidate = {
   async paramsCreateSell(params: Request<ISellsRequest>['params']): Promise<undefined|{errors:ValidationError['errors']}>{
     try{
       await Schemas.sellRequestSchema.validate(params)
-
     }catch(error){
       return errorsContruct(error)
     }

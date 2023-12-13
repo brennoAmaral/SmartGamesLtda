@@ -1,11 +1,11 @@
 import { IDataBase } from "../infra/mysql"
-import { IGlobalSellInsertDTO } from "../dtos/globalSells.dto"
+import IGlobalSellsDTO, { IGlobalSellInsertDTO } from "../dtos/globalSells.dto"
 import { IInsertDTO } from "../dtos/generics.dto"
 
 
 interface IGlobalSellsModel {
   (dataBase: IDataBase): {
-    getById(): unknown
+    getById(idGlobalSell:number): Promise<IGlobalSellsDTO| undefined>
     getAll(): unknown
     create(paramsGlobalSells: IGlobalSellInsertDTO): Promise<undefined | IInsertDTO>
     updateById(): unknown
@@ -18,8 +18,9 @@ const GlobalSellsModel:IGlobalSellsModel = (dataBase) => ({
    
   },
   
-  async getById(){
-    
+  async getById(idGlobalSell){
+    const [globalSell] = await dataBase.select<IGlobalSellsDTO>('*', 'global_sells', `WHERE idGlobalSell = ${idGlobalSell}`) 
+    return globalSell 
   },
   async create(paramsGlobalSells){
     const {discount, sellCode, shipMethod, totalValue, } = paramsGlobalSells

@@ -18,6 +18,7 @@ export async function createSell(request: Request<ISellsRequest>, response: Resp
     return
   }
 
+
   const {discount, price, quantity} = request.params
   const storageRespose = await StorageController.managementStorage(request, response)
   if(storageRespose){
@@ -38,11 +39,17 @@ export async function createSell(request: Request<ISellsRequest>, response: Resp
   }
 
   if(idGlobalSell && idISellStore){
-    await GlobalSells_SellsStoresModel(dataBaseEngine).create(idGlobalSell, idISellStore)
-    response.status(200).send('sell successfuly')
+    const result = await GlobalSells_SellsStoresModel(dataBaseEngine).create(idGlobalSell, idISellStore)
+    if(result?.insertId && params.shipMethod === 'atStore'){
+      const globalSell = await GlobalSellsModel(dataBaseEngine).getById(result.insertId)
+        response.status(200).json(globalSell?.sellCode)
+        return 
+    }
+    response.status(200).json('sell successfuly')
     return
   }else{
     response.status(500).json({error: ['keys not found']})
+    return
   }
 }
 
