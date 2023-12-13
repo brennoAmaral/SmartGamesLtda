@@ -18,10 +18,6 @@
   <img class="styleImg" width="1000" height="700" src="/backend/src/infra/ModeloRelacional.png">
 </div>
 
-🚨OBS: os comandos a seguir deve ser feitos em IDE's separadas ou utilizando o recurso do VS Code WorkSpace, para fins evitar conflitos de commandos do terminal  
-
-
-
 ## Ferramentas Backend🔨
   - [Node](https://nodejs.org/en)
   - [Typescript](https://www.typescriptlang.org/)
@@ -36,6 +32,8 @@
   - [Ionic](https://ionicframework.com/)
   - [axios](https://axios-http.com/ptbr/docs/intro)
   - [yup](https://www.npmjs.com/package/yup)
+
+🚨OBS: os comandos a seguir deve ser feitos em IDE's separadas ou utilizando o recurso do VS Code WorkSpace, para fins evitar conflitos de commandos do terminal  
 
 
 ## Instalação e configuração do projeto 💻🖱️
