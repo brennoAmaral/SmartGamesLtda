@@ -1,8 +1,0 @@
-export const dbConfig = {
-  user: '',
-  host: '',
-  database: '',
-  password: '',
-  port: 5432,
-  ssl: {rejectUnauthorized: false},
-};
