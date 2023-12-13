@@ -5,8 +5,17 @@
 ## Sobre 📙
   Smart games é uma loja ficticia, inventada para focar estudo em backend com node e express.
 
+<div>
+  <img class="styleImg" width="200" height="400" src="/frontend/src/asset/filter.png">
+  <img class="styleImg" width="200" height="400" src="/frontend/src/asset/listGames.png">
+  <img class="styleImg" width="200" height="400" src="/frontend/src/asset/sell.png">
+</div>
+
 ## Banco de dados 🪑🎲
   - [MySQL](https://www.mysql.com/)
+<div>
+  <img class="styleImg" width="1000" height="700" src="/backend/src/infra/ModeloRelacional.png">
+</div>
     
 ## Ferramentas Backend🔨
   - [Node](https://nodejs.org/en)
